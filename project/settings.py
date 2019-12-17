@@ -154,3 +154,5 @@ if SENDGRID_API_KEY:
 
 # CELERY
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://redis:6379/0')
+
+SECURE_SSL_REDIRECT = True
