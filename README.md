@@ -9,5 +9,5 @@ It is advisable to create the rest of the apps in the project in an `app` folder
 `django-admin startproject`
 
 And the structure of the project will remain as follows
-  * app/app1
-  * app/app2
+* app/app1
+* app/app2
