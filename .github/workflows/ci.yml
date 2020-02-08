@@ -41,7 +41,7 @@ jobs:
       env:
         PIPENV_VENV_IN_PROJECT: true
         SECRET_KEY: Test
-        DJANGO_SETTINGS_MODULE: odos.settings_test
+        DJANGO_SETTINGS_MODULE: project.settings_test
         DATABASE_URL: postgresql://postgres:postgres@postgres:${{ job.services.postgres.ports[5432] }}/postgres?sslmode=disable
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_BACKEND_PROJECT_TOKEN }}
 
