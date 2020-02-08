@@ -15,7 +15,6 @@ pylint-celery = "*"
 djangorestframework = "*"
 django-model-utils = "*"
 djangorestframework-jwt = "*"
-psycopg2 = "*"
 gunicorn = "*"
 whitenoise = "*"
 Django = "*"
@@ -27,6 +26,7 @@ boto3 = "*"
 newrelic = "*"
 celery = {extras = ["redis"]}
 django-jet = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.8"

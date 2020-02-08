@@ -17,12 +17,15 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Environment for the files on S3
+DJANGO_ENVIRONMENT = os.environ.get('DJANGO_ENVIRONMENT', 'local')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'Shhhhhhh')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', False)
@@ -78,7 +81,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'postgres',                 
+        'USER': 'postgres',               
+        'PASSWORD': 'postgres',       
+        'HOST': 'db',      
+        'PORT': '5432'  
     }
 }
 
@@ -143,12 +150,12 @@ AWS_BUCKET_REGION = os.environ.get('AWS_BUCKET_REGION', '')
 if AWS_ACCESS_KEY_ID:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-## SENDGRID
-SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY', None)
-if SENDGRID_API_KEY:
-    EMAIL_HOST = 'smtp.sendgrid.net'
-    EMAIL_HOST_USER = 'apikey'
-    EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+## POSTMARK
+POSTMARK_API_KEY = os.getenv('POSTMARK_API_KEY', None)
+if POSTMARK_API_KEY:
+    EMAIL_HOST = 'smtp.postmarkapp.com'
+    EMAIL_HOST_USER = POSTMARK_API_KEY
+    EMAIL_HOST_PASSWORD = POSTMARK_API_KEY
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
