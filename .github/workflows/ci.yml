@@ -50,8 +50,6 @@ jobs:
 
     if: success() && github.ref == 'refs/heads/master'
 
-    needs: frontend
-
     steps:
     - uses: actions/checkout@v1
     - name: Push to Heroku
@@ -71,8 +69,6 @@ jobs:
     runs-on: ubuntu-latest
 
     if: success() && contains(github.ref, 'tags')
-
-    needs: frontend
 
     steps:
     - uses: actions/checkout@v1
