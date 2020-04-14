@@ -5,7 +5,6 @@ verify_ssl = true
 
 [dev-packages]
 django-debug-toolbar = "*"
-codacy-coverage = "*"
 coverage = "*"
 pylint = "*"
 pylint-django = "*"
