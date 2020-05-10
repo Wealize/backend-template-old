@@ -27,6 +27,7 @@ newrelic = "*"
 celery = {extras = ["redis"]}
 django-jet = "*"
 psycopg2-binary = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.8"
