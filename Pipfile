@@ -9,6 +9,7 @@ coverage = "*"
 pylint = "*"
 pylint-django = "*"
 pylint-celery = "*"
+model_bakery = "*"
 
 [packages]
 djangorestframework = "*"
