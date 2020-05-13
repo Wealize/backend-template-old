@@ -3,8 +3,8 @@ build:
     web: Dockerfile.prod
     celery: Dockerfile.prod
 run:
-  web: gunicorn project.wsgi --limit-request-line 8188 --log-file -
-  celery: celery worker --app=project --loglevel=info
+  web: gunicorn project.wsgi --limit-request-line 8188 --log-file - --max-requests 1200 --workers 2
+  celery: REMAP_SIGTERM=SIGQUIT celery -A project worker -l ERROR --without-heartbeat --without-gossip --without-mingle -O fair
 release:
   image: web
   command:

@@ -12,5 +12,8 @@ RUN pip install pipenv
 ADD Pipfile /code/
 RUN pipenv install --system
 
+# This is needed only if we don't use S3 to store staticfiles
+RUN python manage.py collectstatic --noinput
+
 RUN adduser --disabled-login project
 USER project
