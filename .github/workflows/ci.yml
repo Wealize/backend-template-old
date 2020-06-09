@@ -30,12 +30,12 @@ jobs:
 
       - name: Install deps
         run: |
-          pip3 install pipenv
+          pip3 install poetry
 
       - name: Run tests
         run: |
-          pipenv install --dev
-          pipenv run coverage run --source='.' manage.py test
+          poetry install
+          poetry run coverage run --source='.' manage.py test
         env:
           PIPENV_VENV_IN_PROJECT: true
           DJANGO_SETTINGS_MODULE: project.settings_test

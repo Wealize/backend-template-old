@@ -4,7 +4,7 @@ services:
   redis:
     image: redis
 
-  db:
+  postgres:
     image: postgres:12
     environment:
       POSTGRES_USER: "postgres"
@@ -25,12 +25,12 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      - db
+      - postgres
       - redis
 
   celery:
     image: backend
-    command: pipenv run celery -A project worker -l info -E
+    command: poetry run celery -A project worker -l info -E
     environment:
       REDIS_HOST: redis
       DJANGO_DEBUG: 1
@@ -39,7 +39,7 @@ services:
       - .:/code/
     depends_on:
       - redis
-      - db
+      - postgres
 
 volumes:
   postgres_data:

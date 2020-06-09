@@ -7,7 +7,6 @@ RUN mkdir /code
 
 WORKDIR /code
 
-RUN pip install pipenv
-RUN pipenv --python 3.8
-ADD Pipfile /code/
-RUN pipenv install --dev
+RUN pip install poetry
+ADD poetry.lock pyproject.toml /code/
+RUN poetry install
