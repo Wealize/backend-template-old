@@ -20,7 +20,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'Shhhhhhh')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', False))
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -159,14 +160,14 @@ if AWS_ACCESS_KEY_ID:
     THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 JWT_AUTH = {
-   'JWT_EXPIRATION_DELTA': timedelta(days=30)
+    'JWT_EXPIRATION_DELTA': timedelta(days=30)
 }
 
 PAGE_SIZE = 30
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-       'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-       'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'EXCEPTION_HANDLER': 'nluproxy.custom_rest_framework.custom_exception_handler',
     'DEFAULT_PERMISSION_CLASSES': (
@@ -181,7 +182,7 @@ ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'Nieves22')
 
-## POSTMARK
+# POSTMARK
 POSTMARK_API_KEY = os.getenv('POSTMARK_API_KEY', None)
 if POSTMARK_API_KEY:
     EMAIL_HOST = 'smtp.postmarkapp.com'
@@ -194,16 +195,14 @@ if not DEBUG:
     RAVEN_CONFIG = {
         'dsn': os.environ.get('SENTRY_DSN', '')
     }
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     EMAIL_HOST = 'localhost'
     EMAIL_PORT = 1025
     EMAIL_USE_TLS = False
     EMAIL_USE_SSL = False
-
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # -----------------------------------------------------------------------------
 # CELERY
@@ -212,17 +211,17 @@ if not DEBUG:
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://redis:6379/0')
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
-CELERY_TASK_SERIALIZER='json'
+CELERY_TASK_SERIALIZER = 'json'
 CELERY_TASK_SOFT_TIME_LIMIT = os.environ.get('CELERY_TASK_SOFT_TIME_LIMIT', 20)
 CELERY_TASK_TIME_LIMIT = os.environ.get('CELERY_TASK_TIME_LIMIT', 30)
-CELERY_REDIS_MAX_CONNECTIONS = os.environ.get('CELERY_REDIS_MAX_CONNECTIONS', 20)
+CELERY_REDIS_MAX_CONNECTIONS = os.environ.get(
+    'CELERY_REDIS_MAX_CONNECTIONS', 20)
 CELERY_TASK_ACKS_LATE = True
-CELERY_WORKER_MAX_TASKS_PER_CHILD = os.environ.get('CELERY_WORKER_MAX_TASKS_PER_CHILD', 50)
-CELERY_WORKER_MAX_MEMORY_PER_CHILD = os.environ.get('CELERY_WORKER_MAX_MEMORY_PER_CHILD', 100 * 1000)  # KB
+CELERY_WORKER_MAX_TASKS_PER_CHILD = os.environ.get(
+    'CELERY_WORKER_MAX_TASKS_PER_CHILD', 50)
+CELERY_WORKER_MAX_MEMORY_PER_CHILD = os.environ.get(
+    'CELERY_WORKER_MAX_MEMORY_PER_CHILD', 100 * 1000)  # KB
 CELERY_WORKER_CONCURRENCY = os.environ.get('CELERY_WORKER_CONCURRENCY', 4)
-# CELERY_TASK_COMPRESSION = 'gzip'
-# CELERY_TASK_ROUTES = {
-# 'process_message': 'message' }
 
 # ADMIN
 ADMIN_SITE_HEADER = os.environ.get('ADMIN_SITE_HEADER', 'Coloq.io')
@@ -233,4 +232,3 @@ try:
     from .settings_local import *
 except ImportError:
     pass
-
