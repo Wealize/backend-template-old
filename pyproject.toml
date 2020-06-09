@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "backend-template"
+version = "1.0.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+djangorestframework = "*"
+django-model-utils = "*"
+djangorestframework-jwt = "*"
+gunicorn = "*"
+whitenoise = "*"
+Django = "*"
+django-sendgrid-v5 = "*"
+dj-database-url = "*"
+sentry-sdk = "*"
+django-storages = "*"
+boto3 = "*"
+newrelic = "*"
+celery = {extras = ["redis"], version="*"}
+django-jet = "*"
+psycopg2-binary = "*"
+django-cors-headers = "*"
+
+[tool.poetry.dev-dependencies]
+django-debug-toolbar = "*"
+coverage = "*"
+pylint = "*"
+pylint-django = "*"
+pylint-celery = "*"
+model_bakery = "*"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

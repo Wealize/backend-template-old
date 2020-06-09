@@ -32,8 +32,8 @@ docker-compose build
 The first time we start the project locally it will be necessary to migrate the data and create a superuser
 
 ```bash
-docker-compose run --rm backend pipenv run python manage.py migrate
-docker-compose run --rm backend pipenv run python manage.py createsuperuser
+docker-compose run --rm backend poetry run python manage.py migrate
+docker-compose run --rm backend poetry run python manage.py createsuperuser
 ```
 
 ## Run project
@@ -51,13 +51,13 @@ docker-compose up
 Always use `{PROJECT-NAME}.settings_test` as Django settings file as we sometimes need to override production settings
 
 ```bash
-docker-compose run -e DJANGO_SETTINGS_MODULE={PROJECT-NAME}.settings_test --rm backend pipenv run coverage run --source='.' manage.py test
+docker-compose run -e DJANGO_SETTINGS_MODULE={PROJECT-NAME}.settings_test --rm backend poetry run coverage run --source='.' manage.py test
 ```
 
 ### Generate HTML test coverage
 
 ```bash
-docker-compose run --rm backend pipenv run coverage html
+docker-compose run --rm backend poetry run coverage html
 ```
 
 ### View HTML test coverage

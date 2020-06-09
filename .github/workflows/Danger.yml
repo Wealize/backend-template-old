@@ -27,11 +27,11 @@ jobs:
 
       - name: Installing python deps
         run: |
-          pip3 install pipenv
-          pipenv install --dev
+          pip3 install poetry
+          poetry install
 
       - name: Run pylint
-        run: pipenv run pylint contracts/ tec/ --rcfile=.pylintrc >> pylint.json
+        run: poetry run pylint contracts/ tec/ --rcfile=.pylintrc >> pylint.json
         continue-on-error: true
 
       - name: Danger
