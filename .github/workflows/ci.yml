@@ -28,13 +28,24 @@ jobs:
           python-version: "3.8"
           architecture: "x64"
 
-      - name: Install deps
+      - name: Set up poetry
         run: |
           pip3 install poetry
+          poetry config virtualenvs.create true
+          poetry config cache-dir
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: poetry-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            poetry-${{ runner.os }}-
+
+      - name: Install deps
+        run: poetry install
 
       - name: Run tests
         run: |
-          poetry install
           poetry run coverage run --source='.' manage.py test
         env:
           PIPENV_VENV_IN_PROJECT: true

@@ -25,10 +25,21 @@ jobs:
           python-version: "3.8"
           architecture: "x64"
 
-      - name: Installing python deps
+      - name: Set up poetry
         run: |
           pip3 install poetry
-          poetry install
+          poetry config virtualenvs.create true
+          poetry config cache-dir
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: poetry-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+          restore-keys: |
+            poetry-${{ runner.os }}-
+
+      - name: Install deps
+        run: poetry install
 
       - name: Run pylint
         run: poetry run pylint contracts/ tec/ --rcfile=.pylintrc >> pylint.json
