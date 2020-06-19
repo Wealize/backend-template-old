@@ -9,6 +9,7 @@ WORKDIR /code
 COPY . /code/
 
 RUN pip install poetry
+RUN poetry config virtualenvs.create false
 ADD poetry.lock pyproject.toml /code/
 RUN poetry install --no-dev
 
