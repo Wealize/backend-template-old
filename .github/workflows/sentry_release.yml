@@ -23,4 +23,4 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: "production"
-          version: ${{ github.event.repository.name }}-${{ env.RELEASE_VERSION }}
+          version: ${{ secrets.SENTRY_PROJECT }}-${{ env.RELEASE_VERSION }}
