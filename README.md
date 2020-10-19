@@ -15,6 +15,8 @@ And the structure of the project will remain as follows
 - app/app1
 - app/app2
 
+Dont forget to add the `SENTRY_PROJECT` secret to the repository, this will allow sentry to track the releases.
+
 # {PROJECT-NAME}
 
 ## Installation
