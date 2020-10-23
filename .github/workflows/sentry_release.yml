@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Get release version
-        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-
       - name: Create Sentry Release
         uses: getsentry/action-release@v1
         env:
@@ -23,4 +20,4 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: "production"
-          version: ${{ secrets.SENTRY_PROJECT }}-${{ env.RELEASE_VERSION }}
+          version: ${{ secrets.SENTRY_PROJECT }}-${{ github.event.release.tag_name }}
