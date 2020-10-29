@@ -7,7 +7,7 @@ jobs:
     runs-on: "ubuntu-latest"
 
     container:
-      image: python:3.8
+      image: python:3.9
 
     services:
       postgres:
@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/setup-python@v1
         with:
-          python-version: "3.8"
+          python-version: "3.9"
           architecture: "x64"
 
       - name: Set up poetry

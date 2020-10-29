@@ -2,19 +2,19 @@
 name = "backend-template"
 version = "1.0.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Wealize"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 djangorestframework = "*"
 django-model-utils = "*"
 djangorestframework-jwt = "*"
 gunicorn = "*"
 whitenoise = "*"
-Django = "*"
+Django = "^3.1.2"
 django-sendgrid-v5 = "*"
 dj-database-url = "*"
-sentry-sdk = "*"
+sentry-sdk = "0.19.1"
 django-storages = "*"
 boto3 = "*"
 newrelic = "*"

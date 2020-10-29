@@ -22,7 +22,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v1
         with:
-          python-version: "3.8"
+          python-version: "3.9"
           architecture: "x64"
 
       - name: Set up poetry
@@ -42,10 +42,10 @@ jobs:
         run: poetry install
 
       - name: Run pylint
-        run: poetry run pylint contracts/ tec/ --rcfile=.pylintrc >> pylint.json
+        run: poetry run pylint project/ --rcfile=.pylintrc >> pylint.json
         continue-on-error: true
 
       - name: Danger
         run: npx danger ci
         env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.PERSONAL_SECRET_TOKEN }}
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.TNP_GITHUB_TOKEN }}
