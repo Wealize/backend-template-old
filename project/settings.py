@@ -192,9 +192,12 @@ if POSTMARK_API_KEY:
     EMAIL_USE_TLS = True
 
 if not DEBUG:
-    RAVEN_CONFIG = {
-        'dsn': os.environ.get('SENTRY_DSN', '')
-    }
+    sentry_sdk.init(
+        dsn=os.environ.get('SENTRY_DSN', ''),
+        environment=DJANGO_ENVIRONMENT,
+        traces_sample_rate=1.0,
+        send_default_pii=True
+    )
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 else:
