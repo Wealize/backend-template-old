@@ -19,3 +19,5 @@ if database_url:
         database_url, conn_max_age=600)
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+DEBUG = True
+SECURE_SSL_REDIRECT = False
