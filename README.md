@@ -1,4 +1,4 @@
-# A template to bootstrap TNP Backend projects
+# A template to bootstrap Wealize Backend projects
 
 ## Template info, delete after use the template
 
