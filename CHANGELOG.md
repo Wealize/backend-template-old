@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 2021.09.29
+
+- Added django-guardian
+- Updated Django and Python versions
+- Django-jet deleted
+
 ## 2020.05.13
 
 - Add defaults for gunicorn and celery correct performance

@@ -1,17 +1,17 @@
 [tool.poetry]
 name = "backend-template"
-version = "1.0.0"
+version = "1.1.0"
 description = ""
 authors = ["Wealize"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 djangorestframework = "*"
 django-model-utils = "*"
 djangorestframework-jwt = "*"
 gunicorn = "*"
 whitenoise = "*"
-Django = "^3.1.6"
+Django = "^3.2.9"
 django-sendgrid-v5 = "*"
 dj-database-url = "*"
 sentry-sdk = "0.19.5"
@@ -19,9 +19,9 @@ django-storages = "*"
 boto3 = "*"
 newrelic = "*"
 celery = {extras = ["redis"], version="*"}
-django-jet = "*"
 psycopg2-binary = "*"
 django-cors-headers = "*"
+django-guardian = "^2.4.0"
 
 [tool.poetry.dev-dependencies]
 django-debug-toolbar = "*"
