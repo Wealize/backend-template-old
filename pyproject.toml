@@ -22,6 +22,7 @@ celery = {extras = ["redis"], version="*"}
 psycopg2-binary = "*"
 django-cors-headers = "*"
 django-guardian = "^2.4.0"
+django-jazzmin = "^2.4.8"
 
 [tool.poetry.dev-dependencies]
 django-debug-toolbar = "*"

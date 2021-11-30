@@ -24,6 +24,7 @@ ALLOWED_HOSTS = os.environ.get(
     'ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,6 +37,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 ]
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "flatly",
+    "dark_mode_theme": "darkly",
+}
+JAZZMIN_SETTINGS = {'show_ui_builder': True}
 
 CORS_ORIGIN_WHITELIST = os.environ.get(
     'CORS_ORIGIN_WHITELIST',
