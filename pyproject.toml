@@ -23,6 +23,7 @@ psycopg2-binary = "*"
 django-cors-headers = "*"
 django-guardian = "^2.4.0"
 django-jazzmin = "^2.4.8"
+graphene-django = "^2.15.0"
 
 [tool.poetry.dev-dependencies]
 django-debug-toolbar = "*"
