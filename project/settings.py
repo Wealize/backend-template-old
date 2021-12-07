@@ -174,7 +174,6 @@ JWT_AUTH = {
 PAGE_SIZE = 30
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
     'EXCEPTION_HANDLER': 'nluproxy.custom_rest_framework.custom_exception_handler',
