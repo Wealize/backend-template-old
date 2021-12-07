@@ -7,12 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## 2021.09.30
+## 2021.11.30
 
 - Added graphene-django for GraphQL api
 - Added django-jazzmin to tweak Django admin easier
 
-## 2021.09.29
+## 2021.11.29
 
 - Added django-guardian
 - Updated Django and Python versions
