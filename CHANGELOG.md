@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 2021.12.07
+
+- Changed JWT package for DRF
+- Removed Graphene
+
 ## 2021.11.30
 
 - Added graphene-django for GraphQL api
