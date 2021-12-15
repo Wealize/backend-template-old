@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 2021.12.15
+
+- Installed django-filter
+- Configured locale and gettext
+- Added users default model
+- Configured django rest jwt
+- added registration email link on user creation
+- Added Base for testing and default view auth
+
 ## 2021.12.07
 
 - Changed JWT package for DRF

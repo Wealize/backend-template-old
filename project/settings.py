@@ -31,19 +31,36 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'graphene_django',
     'django.contrib.postgres',
 
     # Third party
     'rest_framework',
+    'rest_framework_simplejwt',
+    'django_filters',
     'corsheaders',
+
+    # Own
+    'users',
 ]
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+ADMIN_SITE_HEADER = os.environ.get('ADMIN_SITE_HEADER', 'Localby')
+ADMIN_SITE_TITLE = os.environ.get('ADMIN_SITE_TITLE', 'Localby Admin')
+ADMIN_INDEX_TITLE = os.environ.get('ADMIN_INDEX_TITLE', 'Localby Admin')
 
 JAZZMIN_UI_TWEAKS = {
     "theme": "flatly",
     "dark_mode_theme": "darkly",
 }
-JAZZMIN_SETTINGS = {'show_ui_builder': True}
+JAZZMIN_SETTINGS = {
+    'show_ui_builder': True,
+    'site_title': ADMIN_SITE_TITLE,
+    'site_header': ADMIN_SITE_TITLE,
+    'site_brand': ADMIN_SITE_TITLE
+}
 
 CORS_ORIGIN_WHITELIST = os.environ.get(
     'CORS_ORIGIN_WHITELIST',
@@ -109,6 +126,7 @@ if database_url:
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
+AUTH_USER_MODEL = 'users.User'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -174,6 +192,7 @@ JWT_AUTH = {
 PAGE_SIZE = 30
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
     'EXCEPTION_HANDLER': 'nluproxy.custom_rest_framework.custom_exception_handler',
@@ -182,7 +201,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
-    )
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL')
@@ -232,11 +252,6 @@ CELERY_WORKER_MAX_TASKS_PER_CHILD = os.environ.get(
 CELERY_WORKER_MAX_MEMORY_PER_CHILD = os.environ.get(
     'CELERY_WORKER_MAX_MEMORY_PER_CHILD', 100 * 1000)  # KB
 CELERY_WORKER_CONCURRENCY = os.environ.get('CELERY_WORKER_CONCURRENCY', 4)
-
-# ADMIN
-ADMIN_SITE_HEADER = os.environ.get('ADMIN_SITE_HEADER', 'Coloq.io')
-ADMIN_SITE_TITLE = os.environ.get('ADMIN_SITE_TITLE', 'Coloq.io Admin')
-ADMIN_INDEX_TITLE = os.environ.get('ADMIN_INDEX_TITLE', 'Coloq.io Admin')
 
 try:
     from .settings_local import *
